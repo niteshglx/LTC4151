@@ -105,7 +105,7 @@ double LTC4151::getSnapshotLoadCurrent(double r)
 	ctrlReg |= SNAPSHOT_CHANNEL_SENSE << CTRL_BIT_ADC_CHN_SNAPSHOT_MODE;
 	setControlRegister(ctrlReg);
 
-	return readADCSnapshot(REG_SENSE_H) * 81.92 / 4096.0 / r;
+	return readADC(REG_SENSE_H, 2)*9.98/10000-8.95/1000;
 }
 
 double LTC4151::getSnapshotInputVoltage()
@@ -116,7 +116,7 @@ double LTC4151::getSnapshotInputVoltage()
 	ctrlReg |= SNAPSHOT_CHANNEL_VIN << CTRL_BIT_ADC_CHN_SNAPSHOT_MODE;
 	setControlRegister(ctrlReg);
 
-	return readADCSnapshot(REG_VIN_H) * 102.4 / 4096.0;
+	return readADC(REG_VIN_H, 2)*0.0248+91.64/1000;
 }
 
 double LTC4151::getSnapshotADCInVoltage()
