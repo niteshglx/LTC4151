@@ -83,12 +83,12 @@ byte LTC4151::getControlRegister()
 
 double LTC4151::getLoadCurrent(double r)
 {
-	return readADC(REG_SENSE_H, 2) * 81.92 / 4096.0 / r;
+	return readADC(REG_SENSE_H, 2)*9.98/10000-8.95/1000;
 }
 
 double LTC4151::getInputVoltage()
 {
-	return readADC(REG_VIN_H, 2) * 102.4 / 4096.0;
+	return readADC(REG_VIN_H, 2)*0.0248+91.64/1000;
 }
 
 double LTC4151::getADCInVoltage()
